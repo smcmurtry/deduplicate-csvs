@@ -1,0 +1,34 @@
+{
+	"name": "deduplicate-csvs",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": ".."
+	},
+	"remoteEnv": {
+		"PATH": "/home/vscode/.local/bin:${containerEnv:PATH}" // give our installed Python modules precedence
+	},
+	"containerEnv": {
+		"SHELL": "/bin/zsh"
+	},
+	"settings": {
+		"python.linting.enabled": true,
+		"python.linting.pylintEnabled": true,
+		"python.linting.pylintPath": "/usr/local/bin/pylint",
+		"python.pythonPath": "/usr/local/bin/python",
+	},
+	"extensions": [
+		"donjayamanne.python-extension-pack",
+		"ms-python.python",
+		"eamodio.gitlens",
+		"visualstudioexptteam.vscodeintellicode",
+		"ms-toolsai.jupyter",
+		"ms-toolsai.jupyter-renderers",
+		"ms-toolsai.jupyter-keymap",
+		"ms-toolsai.vscode-jupyter-cell-tags",
+	],
+	"forwardPorts": [
+		5000
+	],
+	"postCreateCommand": "entrypoint.sh",
+	"remoteUser": "vscode"
+}
